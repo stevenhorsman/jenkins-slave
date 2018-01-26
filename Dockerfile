@@ -3,15 +3,14 @@ FROM evarga/jenkins-slave
 
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
-# Install curl, maven,
+# Install curl, java,
 RUN apt-get update && apt-get install -y \
 curl \
 openjdk-8-jdk \
-maven \
 && rm -rf /var/lib/apt/lists/*
 
 # Add node version 8 which should bring in npm
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs maven
 
 CMD ["/usr/sbin/sshd", "-D"]
