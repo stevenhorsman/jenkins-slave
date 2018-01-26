@@ -8,9 +8,13 @@ FROM ubuntu:xenial
 RUN apt-get update
 RUN apt-get -y upgrade
 
+# Install SSH and Java
+RUN apt-get install -y openssh-server openjdk-8-jdk curl sudo
+
 # Add locales after locale-gen as needed
 # Upgrade packages on image
 # Preparations for sshd
+RUN apt-get clean && apt-get update && apt-get install -y locales
 RUN locale-gen en_GB.UTF-8 &&\
     apt-get -q update &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q upgrade -y -o Dpkg::Options::="--force-confnew" --no-install-recommends &&\
@@ -26,9 +30,6 @@ EXPOSE 22
 ENV LANG en_GB.UTF-8
 ENV LANGUAGE en_GB:en
 ENV LC_ALL en_GB.UTF-8
-
-# Install SSH and Java
-RUN apt-get install -y openssh-server openjdk-8-jdk curl sudo
 
 # Set user jenkins to the image
 RUN useradd -m -d /home/jenkins -s /bin/sh jenkins &&\
