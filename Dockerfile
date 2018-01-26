@@ -6,6 +6,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 # Install curl, maven,
 RUN apt-get update && apt-get install -y \
 curl \
+openjdk-8-jdk \
+maven \
 && rm -rf /var/lib/apt/lists/*
 
 # Add node version 8 which should bring in npm
