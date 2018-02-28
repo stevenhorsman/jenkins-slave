@@ -9,6 +9,7 @@ curl \
 ftp \
 git \
 openjdk-8-jdk \
+sshpass \
 && rm -rf /var/lib/apt/lists/*
 
 # Add node version 8 which should bring in npm, add maven and required ssl certificates to contact maven central
