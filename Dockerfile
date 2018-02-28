@@ -6,7 +6,6 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 # Install curl, maven,
 RUN apt-get update && apt-get install -y \
 curl \
-ftp \
 git \
 openjdk-8-jdk \
 sshpass \
