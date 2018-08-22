@@ -14,5 +14,7 @@ sshpass \
 # Add node version 8 which should bring in npm, add maven and required ssl certificates to contact maven central
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install -y nodejs maven ca-certificates-java && update-ca-certificates -f
+RUN npm install -g npm
+RUN npm --version
 
 CMD ["/usr/sbin/sshd", "-D"]
